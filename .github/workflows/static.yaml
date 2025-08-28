@@ -26,13 +26,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
+      - name: Install minify
+        run: |
+          bun add -g minify
+
       - name: Build
         run: |
-          make build
+          bun build src/index.html --outdir dist --minify
+          minify dist/index.html -o dist/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
