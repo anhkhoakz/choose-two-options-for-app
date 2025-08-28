@@ -1,0 +1,142 @@
+body {
+	font-family:
+		system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: whitesmoke;
+	margin: 0;
+}
+
+.pick-two {
+	background: #fff;
+	border-radius: 0.75rem;
+	padding: 1.25rem;
+	box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+	max-width: 20rem;
+	width: 100%;
+}
+
+.pick-two h2 {
+	margin: 0 0 1rem;
+	text-align: center;
+}
+
+.hint {
+	margin: 0.25rem 0 0.75rem;
+	text-align: center;
+	color: #666;
+	font-size: 0.9em;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	background: #f3f3f3;
+	border-radius: 0.5rem;
+	padding: 0.625rem 0.875rem;
+	margin-top: 0.625rem;
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-weight: bold;
+}
+
+/* Ensure inline SVG icons are visible and sized like text icons */
+.label svg {
+	width: 1.1em;
+	height: 1.1em;
+	flex-shrink: 0;
+	display: inline-block;
+	vertical-align: middle;
+	fill: currentColor;
+}
+
+/* Switch (slider) styles */
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 3rem;
+	height: 1.75rem;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #d1d5db;
+	transition:
+		background-color 180ms ease,
+		box-shadow 180ms ease;
+	border-radius: 9999px;
+	box-shadow: inset 0 0 0 0.0625rem rgba(0, 0, 0, 0.08);
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 1.375rem;
+	width: 1.375rem;
+	left: 0.1875rem;
+	top: 0.1875rem;
+	background-color: #fff;
+	transition: transform 180ms ease;
+	border-radius: 9999px;
+	box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.15);
+}
+
+.switch input:checked + .slider {
+	background-color: #4caf50;
+}
+
+.switch input:checked + .slider:before {
+	transform: translateX(1.25rem);
+}
+
+/* Color only the icon, not the text */
+.label.fast svg {
+	color: #ff0000;
+}
+
+.label.cheap svg {
+	color: #ffd700;
+}
+
+.label.good svg {
+	color: #ff894f;
+}
+
+.row .label.fast ~ .switch input:checked + .slider {
+	background-color: #ff0000;
+}
+
+.row .label.cheap ~ .switch input:checked + .slider {
+	background-color: #ffd700;
+}
+
+.row .label.good ~ .switch input:checked + .slider {
+	background-color: #ff894f;
+}
+
+#pick-two-msg {
+	margin-top: 0.75rem;
+	text-align: center;
+	color: #b00020;
+	font-size: 0.9em;
+}
