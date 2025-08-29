@@ -6,3 +6,7 @@ build: clean
 # clean build artifacts
 clean:
     rm -rf dist
+
+# dev mode
+dev:
+        bun run src/index.html

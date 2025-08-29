@@ -7,14 +7,14 @@ let isProgrammatic = false;
 
 /**
  * Handle checkbox change.
- * @param {Event & { target: HTMLInputElement }} e
+ * @param {Event & { target: HTMLInputElement }} event
  * @returns {void}
  */
-const onChange = (e) => {
+const onChange = (event) => {
 	if (isProgrammatic) return;
-	const id = e.target.id;
+	const id = event.target.id;
 
-	if (e.target.checked) {
+	if (event.target.checked) {
 		if (!selectedOrder.includes(id)) {
 			selectedOrder.push(id);
 		}
@@ -23,6 +23,9 @@ const onChange = (e) => {
 	}
 
 	const checked = Array.from(checkboxes).filter((cb) => cb.checked);
+	if (checked.length <= 2) {
+		return;
+	}
 	if (checked.length > 2) {
 		const toRemoveId = selectedOrder.find((x) => x !== id);
 		/** @type {HTMLInputElement | null} */
@@ -39,6 +42,6 @@ const onChange = (e) => {
 		}
 	}
 };
-for (const cb of checkboxes) {
-	cb.addEventListener("change", onChange);
+for (const checkbox of checkboxes) {
+	checkbox.addEventListener("change", onChange);
 }
